@@ -184,11 +184,8 @@ data::add_new_arc(int from, int to, graph_structure & gs){
     gs.pred_succ[to*n+from] = 2;
     gs.pred_succ[from*n+to] = 1;
     for (size_t j = 0; j < n; ++j){
-        if(gs.pred_succ[to*n+j]==1){ // j is successor of 'to'
-            gs.pred_succ[from*n+j] = 1;
-        }
         if(gs.pred_succ[from*n+j]==2){ // j is predecessor of 'from'
-            gs.pred_succ[to*n+j] = 2;
+            BFS(j, n, succ, pred_succ);
         }
     }
 }
